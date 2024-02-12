@@ -1,22 +1,30 @@
-<footer class="border-t py-6 md:px-8 md:py-0">
+---
+import { Heart } from 'lucide-react'
+---
+
+<footer class="border-t py-6 md:py-0">
   <div
-    class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row"
+    class="container flex flex-row items-center justify-center gap-4 md:h-16"
   >
     <p
-      class="text-center text-sm leading-loose text-muted-foreground md:text-left"
+      class="flex items-center gap-1 text-sm leading-loose text-muted-foreground"
     >
-      Built by{' '}
+      <span class="flex items-center gap-1">
+        Built with <Heart fill="red" stroke="none" size="18px" /> by {' '}
+      </span>
       <a
-        href="https://github.com/AREA44"
+        href="https://ggaurav.dev"
         target="_blank"
         rel="noreferrer"
         class="font-medium underline underline-offset-4"
       >
-        AREA44
+        devggaurav
       </a>
-      . The source code is available on{' '}
+      <span>
+        . The source code is available on{' '}
+      </span>
       <a
-        href="https://github.com/AREA44/astro-shadcn-ui-template"
+        href="https://github.com/dev-ggaurav"
         target="_blank"
         rel="noreferrer"
         class="font-medium underline underline-offset-4"
