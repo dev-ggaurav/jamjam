@@ -1,9 +1,9 @@
 ---
-import ArticleCard from '../../components/ArticleCard.astro'
-import CategoryTag from '../../components/CategoryTag.astro'
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import { formatDate } from '../../lib/utils'
+import { Image } from 'astro:assets'
 import { getEntry } from 'astro:content'
+import { Badge } from '../../components/ui/badge'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { capitalize, formatDate } from '../../lib/utils'
 
 const { slug } = Astro.params
 
@@ -21,16 +21,40 @@ const { Content } = await entry.render()
 ---
 
 <BaseLayout title={entry.data.title}>
-  <div>
-    <div>
-      <img src={'/images/' + entry.data.coverImage} alt="" />
-      <p>{formatDate(entry.data.pubDate)}</p>
-      <CategoryTag category={entry.data.category} />
-      <h2>{entry.data.title}</h2>
-      <p>{entry.data.description}</p>
-    </div>
+  <div class="container relative mx-auto max-w-screen-lg py-10">
     <article class="prose max-w-none dark:prose-invert">
-      <Content />
+      <a
+        href={'/blog/category/' + entry.data.category}
+        transition:name={'category-' + entry.slug}
+      >
+        <Badge>
+          {capitalize(entry.data.category)}
+        </Badge>
+      </a>
+      <Image
+        src={'/images/' + entry.data.coverImage}
+        alt=""
+        width={1020}
+        height={510}
+        alt="Article thumbnail image"
+        transition:name={'img-' + slug}
+      />
+      <div class="flex items-center justify-between">
+        <span
+          class="font-medium text-muted-foreground"
+          transition:name={'date-' + slug}
+        >
+          {formatDate(entry.data.pubDate)}
+        </span>
+      </div>
+      <h1 class="my-4 text-4xl" transition:name={'title-' + slug}>
+        {entry.data.title}
+      </h1>
+      <p>{entry.data.description}</p>
+      <hr class="my-6" />
+      <article class="prose max-w-none dark:prose-invert">
+        <Content />
+      </article>
     </article>
   </div>
 </BaseLayout>

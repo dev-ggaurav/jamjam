@@ -1,7 +1,8 @@
 ---
-import { formatDate } from '../lib/utils'
+import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
-import CategoryTag from './CategoryTag.astro'
+import { capitalize, formatDate } from '../lib/utils'
+import { Badge } from './ui/badge'
 
 const { article } = Astro.props
 
@@ -10,15 +11,46 @@ interface Props {
 }
 ---
 
-<div>
-  <a href={'/blog/' + article.slug}>
-    <img src={'/images/' + article.data.coverImage} alt="Article Thumbnail" />
+<article class="group space-y-3">
+  <a
+    href={'/blog/' + article.slug}
+    class="flex h-52 transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl"
+  >
+    <Image
+      class="h-full w-full overflow-hidden rounded-xl object-cover"
+      width={400}
+      height={200}
+      src={'/images/' + article.data.coverImage}
+      alt="descriptive text"
+      transition:name={'img-' + article.slug}
+    />
   </a>
-  <a href={'/blog/' + article.slug}>
-    <h2>{article.data.title}</h2>
-  </a>
-  <div>
-    <p>{formatDate(article.data.pubDate)}</p>
-    <CategoryTag category={article.data.category} />
+
+  <div class="flex items-center justify-between">
+    <a
+      href={'/blog/category/' + article.data.category}
+      transition:name={'category-' + article.slug}
+    >
+      <Badge>
+        {capitalize(article.data.category)}
+      </Badge>
+    </a>
+    <span
+      class="font-medium text-muted-foreground"
+      transition:name={'date-' + article.slug}
+    >
+      {formatDate(article.data.pubDate)}
+    </span>
   </div>
-</div>
+
+  <div>
+    <a href={'/blog/' + article.slug} class="group-hover:underline">
+      <h2
+        class="line-clamp-3 font-heading text-xl leading-snug md:text-2xl"
+        transition:name={'title-' + article.slug}
+      >
+        {article.data.title}
+      </h2>
+    </a>
+  </div>
+</article>

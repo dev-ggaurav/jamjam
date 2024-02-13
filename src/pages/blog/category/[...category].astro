@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
-import BaseLayout from '../../../layouts/BaseLayout.astro'
 import ArticleCard from '../../../components/ArticleCard.astro'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
 import { capitalize } from '../../../lib/utils'
 
 const { category } = Astro.params
@@ -24,8 +24,17 @@ const categoryArticles = allBlogArticles.filter((article) =>
 ---
 
 <BaseLayout title={`${capitalize(category)} Articles`}>
-  <h1>{capitalize(category)}</h1>
-  <div>
+  <div class="my-6 flex items-start justify-between max-md:gap-4">
+    <h1 class="inline-block text-3xl font-medium">
+      Category : {capitalize(category)}
+    </h1>
+  </div>
+
+  <hr class="mb-7" />
+
+  <div
+    class="grid grid-cols-1 gap-x-6 gap-y-9 md:grid-cols-2 md:gap-y-11 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16"
+  >
     {categoryArticles.map((article) => <ArticleCard article={article} />)}
   </div>
 </BaseLayout>
