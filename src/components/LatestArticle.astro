@@ -1,0 +1,30 @@
+---
+import { formatDate } from '../lib/utils'
+import { capitalize } from '../lib/utils'
+import type { CollectionEntry } from 'astro:content'
+import { Badge } from './ui/badge'
+
+const { article } = Astro.props
+
+interface Props {
+  article: CollectionEntry<'blog'>
+}
+---
+
+<div>
+  <a href={'/blog/' + article.slug}>
+    <img src={'/images/' + article.data.coverImage} alt="Article Thumbnail" />
+  </a>
+  <a href={'/blog/' + article.slug}>
+    <h2>{article.data.title}</h2>
+  </a>
+  <div>
+    <p>{formatDate(article.data.pubDate)}</p>
+
+    <a href={'/blog/category/' + article.data.category}>
+      <Badge>
+        {capitalize(article.data.category)}
+      </Badge>
+    </a>
+  </div>
+</div>

@@ -63,7 +63,7 @@ Something a wise person once told me about typography is:
 It's probably important that images look okay here by default as well:
 
 <Image
-  src="/blog-placeholder-1.jpg"
+  src="/images/blog-placeholder-1.jpg"
   width="960"
   height="480"
   alt="Image"

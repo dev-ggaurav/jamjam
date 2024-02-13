@@ -1,0 +1,36 @@
+---
+import ArticleCard from '../../components/ArticleCard.astro'
+import CategoryTag from '../../components/CategoryTag.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { formatDate } from '../../lib/utils'
+import { getEntry } from 'astro:content'
+
+const { slug } = Astro.params
+
+if (slug === undefined) {
+  throw new Error('Slug is required')
+}
+
+const entry = await getEntry('blog', slug)
+
+if (entry === undefined) {
+  return Astro.redirect('/404')
+}
+
+const { Content } = await entry.render()
+---
+
+<BaseLayout title={entry.data.title}>
+  <div>
+    <div>
+      <img src={'/images/' + entry.data.coverImage} alt="" />
+      <p>{formatDate(entry.data.pubDate)}</p>
+      <CategoryTag category={entry.data.category} />
+      <h2>{entry.data.title}</h2>
+      <p>{entry.data.description}</p>
+    </div>
+    <article class="prose max-w-none dark:prose-invert">
+      <Content />
+    </article>
+  </div>
+</BaseLayout>

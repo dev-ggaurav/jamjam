@@ -1,5 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import { HOMEPAGE_ARTICLE_LIMIT } from '../constants'
+import ArticleCard from '../components/ArticleCard.astro'
+import LatestArticle from '../components/LatestArticle.astro'
+
+const allBlogArticles: CollectionEntry<'blog'>[] = (
+  await getCollection('blog')
+).sort(
+  (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+)
+
+const latestArticle: CollectionEntry<'blog'> = allBlogArticles[0]
+
+const otherArticles: CollectionEntry<'blog'>[] = allBlogArticles.slice(1)
 ---
 
 <BaseLayout
@@ -11,5 +27,17 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       Welcome to jamjam. The best place to find stories, tutorials and resources
       about jamstack!
     </h1>
+    <div>
+      <h2>Latest Article</h2>
+      <LatestArticle article={latestArticle} />
+    </div>
+    <div>
+      <h2>All Articles</h2>
+      {
+        otherArticles
+          .slice(0, HOMEPAGE_ARTICLE_LIMIT)
+          .map((article) => <ArticleCard article={article} />)
+      }
+    </div>
   </section>
 </BaseLayout>

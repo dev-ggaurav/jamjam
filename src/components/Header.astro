@@ -3,7 +3,9 @@ import { buttonVariants } from '../components/ui/button'
 import ThemeToggle from '../components/ThemeToggle.astro'
 ---
 
-<header class="sticky top-0 z-50 w-full border-b bg-background">
+<header
+  class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/75"
+>
   <div
     class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0"
   >
@@ -17,11 +19,11 @@ import ThemeToggle from '../components/ThemeToggle.astro'
     </div>
     <div class="flex flex-1 items-center justify-end space-x-4">
       <nav class="flex items-center space-x-1">
-        <a href="/blog" class={buttonVariants({ variant: 'ghost' })}> Blog </a>
-        <a href="/resources" class={buttonVariants({ variant: 'ghost' })}>
+        <a href="/blog" class={buttonVariants({ variant: 'link' })}> Blog </a>
+        <a href="/resources" class={buttonVariants({ variant: 'link' })}>
           Resources
         </a>
-        <a href="about" class={buttonVariants({ variant: 'ghost' })}> About </a>
+        <a href="about" class={buttonVariants({ variant: 'link' })}> About </a>
         <ThemeToggle />
       </nav>
     </div>
