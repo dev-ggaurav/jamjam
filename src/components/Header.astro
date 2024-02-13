@@ -1,6 +1,6 @@
 ---
 import { buttonVariants } from '../components/ui/button'
-import ThemeToggle from '../components/ThemeToggle.astro'
+import { ThemeToggle } from '../components/ThemeToggle'
 ---
 
 <header
@@ -24,7 +24,7 @@ import ThemeToggle from '../components/ThemeToggle.astro'
           Resources
         </a>
         <a href="about" class={buttonVariants({ variant: 'link' })}> About </a>
-        <ThemeToggle />
+        <ThemeToggle client:idle />
       </nav>
     </div>
   </div>
