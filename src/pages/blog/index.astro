@@ -17,7 +17,7 @@ import BlogHeader from '../../components/BlogHeader.astro'
 <BaseLayout title="Blog">
   <BlogHeader />
   <div
-    class="grid grid-cols-1 gap-x-6 gap-y-9 md:grid-cols-2 md:gap-y-11 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16"
+    class="grid grid-cols-1 gap-x-6 gap-y-9 py-4 md:grid-cols-2 md:gap-y-11 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16"
   >
     {allBlogArticles.map((article) => <ArticleCard article={article} />)}
   </div>
