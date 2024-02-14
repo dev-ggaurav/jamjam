@@ -105,11 +105,11 @@ export function ThemeToggle() {
     <button
       role="button"
       onClick={toggleTheme}
-      className="-mr-2 block min-h-[40px] focus:outline-none"
+      className="block min-h-[40px] focus:outline-none"
     >
       <span className="sr-only">Toggle mode</span>
       <AnimatePresence initial={false}>
-        {theme !== 'dark' ? <SunIcon /> : <MoonIcon />}
+        {theme !== 'dark' ? <MoonIcon /> : <SunIcon />}
       </AnimatePresence>
     </button>
   ) : (

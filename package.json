@@ -1,9 +1,9 @@
 {
-  "name": "@area44/astro-shadcn-ui-template",
-  "version": "23.12.26",
-  "description": "An Astro template for building apps.",
+  "name": "jamjam",
+  "version": "1.0",
+  "description": "Stories, tutorials an resources about jamstack.",
   "author": {
-    "name": "AREA44"
+    "name": "devggaurav"
   },
   "license": "MIT",
   "scripts": {

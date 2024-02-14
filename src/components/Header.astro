@@ -17,15 +17,15 @@ import { ThemeToggle } from '../components/ThemeToggle'
         >
       </a>
     </div>
-    <div class="flex flex-1 items-center justify-end space-x-4">
+    <div class="flex flex-1 items-center justify-end space-x-6">
       <nav class="flex items-center space-x-1">
         <a href="/blog" class={buttonVariants({ variant: 'link' })}> Blog </a>
         <a href="/resources" class={buttonVariants({ variant: 'link' })}>
           Resources
         </a>
         <a href="about" class={buttonVariants({ variant: 'link' })}> About </a>
-        <ThemeToggle client:idle />
       </nav>
+      <ThemeToggle client:idle />
     </div>
   </div>
 </header>
