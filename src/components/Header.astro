@@ -4,28 +4,15 @@ import { ThemeToggle } from '../components/ThemeToggle'
 ---
 
 <header
-  class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/75"
+  class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/70"
 >
-  <div
-    class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0"
-  >
-    <div class="flex gap-6 md:gap-10">
-      <a href="/" class="flex items-center space-x-2">
-        <span
-          class="inline-block font-mono text-2xl font-semibold tracking-tight text-foreground"
-          >jamjam.</span
-        >
-      </a>
-    </div>
-    <div class="flex flex-1 items-center justify-end space-x-6">
-      <nav class="flex items-center space-x-1">
-        <a href="/blog" class={buttonVariants({ variant: 'link' })}> Blog </a>
-        <a href="/resources" class={buttonVariants({ variant: 'link' })}>
-          Resources
-        </a>
-        <a href="about" class={buttonVariants({ variant: 'link' })}> About </a>
-      </nav>
+  <div class="container flex h-16 items-center justify-between space-x-4">
+    <a href="/" class="font-heading text-2xl font-medium text-primary">
+      jamjam.</a
+    >
+    <nav class="flex items-center justify-between gap-x-6">
+      <a href="/blog" class={buttonVariants({ variant: 'link' })}> Blog </a>
       <ThemeToggle client:idle />
-    </div>
+    </nav>
   </div>
 </header>
