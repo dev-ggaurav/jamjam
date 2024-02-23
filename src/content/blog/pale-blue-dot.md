@@ -2,7 +2,7 @@
 title: 'Pale Blue Dot'
 description: "Carl Sagan's reflection on our planet Earth"
 pubDate: 2022-09-05
-coverImage: '/blog-placeholder-4.jpg'
+coverImage: '/image1.png'
 category: 'space'
 slug: 'pale-blue-dot'
 ---

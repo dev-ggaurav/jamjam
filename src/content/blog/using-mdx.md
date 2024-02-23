@@ -2,7 +2,7 @@
 title: 'Using MDX'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 2022-08-02
-coverImage: '/blog-placeholder-5.jpg'
+coverImage: '/image4.png'
 category: 'code'
 slug: 'using-mdx'
 ---

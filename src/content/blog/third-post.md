@@ -2,7 +2,7 @@
 title: 'Third post'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 2022-08-15
-coverImage: '/blog-placeholder-2.jpg'
+coverImage: '/image3.png'
 category: 'design'
 slug: 'third-post'
 ---

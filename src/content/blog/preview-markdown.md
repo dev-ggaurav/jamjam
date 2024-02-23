@@ -2,7 +2,7 @@
 title: 'Preview Markdown'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 2022-08-11
-coverImage: '/blog-placeholder-about.jpg'
+coverImage: '/image2.png'
 category: 'markdown'
 slug: 'preview-markdown'
 ---
