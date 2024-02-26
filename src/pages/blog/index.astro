@@ -2,6 +2,12 @@
 import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import Pagination from '../../components/Pagination.astro'
+import { ARTICLES_PER_PAGE } from '../../constants'
+import ArticleCard from '../../components/ArticleCard.astro'
+import BlogHeader from '../../components/BlogHeader.astro'
+
+const currentPage: number | null = +Astro.url.searchParams.get('page')! || 1
 
 const allBlogArticles: CollectionEntry<'blog'>[] = (
   await getCollection('blog')
@@ -10,8 +16,12 @@ const allBlogArticles: CollectionEntry<'blog'>[] = (
     b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 )
 
-import ArticleCard from '../../components/ArticleCard.astro'
-import BlogHeader from '../../components/BlogHeader.astro'
+const totalPages: number = Math.ceil(allBlogArticles.length / ARTICLES_PER_PAGE)
+
+const articleForPage: CollectionEntry<'blog'>[] = allBlogArticles.slice(
+  (currentPage - 1) * ARTICLES_PER_PAGE,
+  currentPage * ARTICLES_PER_PAGE,
+)
 ---
 
 <BaseLayout title="Blog">
@@ -19,6 +29,12 @@ import BlogHeader from '../../components/BlogHeader.astro'
   <div
     class="mb-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:mb-14 lg:grid-cols-3"
   >
-    {allBlogArticles.map((article) => <ArticleCard article={article} />)}
+    {articleForPage.map((article) => <ArticleCard article={article} />)}
   </div>
+  <Pagination
+    currentPage={currentPage}
+    totalPages={totalPages}
+    disablePrev={currentPage === 1}
+    disableNext={currentPage === totalPages}
+  />
 </BaseLayout>

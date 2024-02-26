@@ -1,6 +1,7 @@
 import { useMounted } from '../hooks/use-mounted'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { Button } from './ui/button'
 
 const SunIcon = () => (
   <>
@@ -109,7 +110,9 @@ export function ThemeToggle() {
     >
       <span className="sr-only">Toggle mode</span>
       <AnimatePresence initial={false}>
-        {theme !== 'dark' ? <MoonIcon /> : <SunIcon />}
+        <Button size="icon" variant="ghost">
+          {theme !== 'dark' ? <MoonIcon /> : <SunIcon />}
+        </Button>
       </AnimatePresence>
     </button>
   ) : (
